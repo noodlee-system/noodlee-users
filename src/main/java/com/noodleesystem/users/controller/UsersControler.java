@@ -1,25 +1,23 @@
-package com.noodleesystem.template.controller;
+package com.noodleesystem.users.controller;
 
 import java.text.MessageFormat;
 import java.util.List;
 
-import com.noodleesystem.template.exception.EmptyQueueException;
+import com.noodleesystem.users.exception.EmptyQueueException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.noodleesystem.template.model.User;
-import com.noodleesystem.template.repository.UserRepository;
-import org.springframework.web.client.HttpClientErrorException;
+import com.noodleesystem.users.model.User;
+import com.noodleesystem.users.repository.UserRepository;
 import serilogj.Log;
 
 @RestController
 @RequestMapping("/api")
-public class TemplateController {
-    final static String queueName = "template_queue";
+public class UsersControler {
+    final static String queueName = "users_queue";
 
     @Autowired
 	private UserRepository usersRepository;
@@ -35,7 +33,7 @@ public class TemplateController {
     @GetMapping("/send")
     String sendToQueue(@RequestParam(value = "message", defaultValue = "Default message") String message) {
         rabbitTemplate.convertAndSend(queueName, message);
-        Log.information("{message} message was sent to {queue} queue!",message, queueName);
+        Log.information("{message} message was sent to {queue} queue!", message, queueName);
         return String.format("Message %s sent!", message);
     }
 

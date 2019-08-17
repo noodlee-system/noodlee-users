@@ -1,4 +1,4 @@
-package com.noodleesystem.template;
+package com.noodleesystem.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import serilogj.Log;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class TemplateService {
+public class UsersService {
     public static void main(String[] args) {
-		SpringApplication.run(TemplateService.class, args);
+		SpringApplication.run(UsersService.class, args);
 
-        Log.information("{serviceName} is running...", "Template Service");
+        Log.information("{serviceName} is running...", "Users Service");
 	}
 }
