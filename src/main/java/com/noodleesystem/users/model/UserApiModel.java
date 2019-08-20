@@ -9,15 +9,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User {
+public class UserApiModel {
     private int id;
-    private String username;
-    private String password;
+
+    private String userName;
     private String firstName;
     private String lastName;
     private String email;
+    private String country;
+    private String city;
 
-    public User() { }
+    public UserApiModel() { }
 
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,22 +31,13 @@ public class User {
         this.id = id;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
     @Column(name = "username", nullable = false)
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Column(name = "password", nullable = false)
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Column(name = "firstname", nullable = false)
@@ -73,4 +66,18 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Column(name = "country", nullable = false)
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Column(name = "city")
+    public String getCity() { return city; }
+
+    public void setCity(String city) { this.city = city; }
 }

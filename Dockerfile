@@ -17,6 +17,6 @@ FROM java:8
 
 COPY --from=builder /home/app/target/users-1.0.jar /usr/local/lib/users-service.jar
 
-EXPOSE 8082
+EXPOSE 8081
 
 ENTRYPOINT [ "java", "-jar", "/usr/local/lib/users-service.jar" ]
