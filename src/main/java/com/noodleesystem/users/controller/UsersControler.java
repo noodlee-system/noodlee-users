@@ -1,8 +1,8 @@
 package com.noodleesystem.users.controller;
 
 import java.util.List;
-import java.util.Optional;
 
+import com.noodleesystem.users.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,4 +19,15 @@ public class UsersControler {
     List<UserApiModel> getAllUsers() {
         return usersRepository.findAll();
 	}
+
+    @GetMapping("/{id}")
+    UserApiModel getUser(@PathVariable int id) {
+        UserApiModel user = usersRepository.getUserById(id);
+
+        if (user != null) {
+            return user;
+        } else {
+            throw new UserNotFoundException(id);
+        }
+    }
 }
