@@ -1,14 +1,14 @@
 version: "3.5"
 
 services:
-  users-service_api:
-    container_name: users-service_api
+  users-service:
+    container_name: users-service
     build:
       context: ./
       dockerfile: Dockerfile
     image: users-service
     ports:
-      - "8081:8080"
+      - "8082:8080"
     depends_on:
       - users-service_database
     networks:
@@ -18,13 +18,14 @@ services:
     container_name: users-service_database
     image: postgres:9.6
     ports:
-      - "5433:5432"
+      - "5434:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 3CcbvP@!z&YZ6Hkb3yp_
       POSTGRES_DB: users
     volumes:
       - users-service_database-volume:/var/lib/postgresql/users
+      - ./_database/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - noodlee-system-network
 

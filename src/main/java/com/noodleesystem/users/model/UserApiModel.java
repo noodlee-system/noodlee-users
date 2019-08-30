@@ -12,9 +12,9 @@ import javax.persistence.Table;
 public class UserApiModel {
     private int id;
 
-    private String userName;
-    private String firstName;
-    private String lastName;
+    private String username;
+    private String firstname;
+    private String lastname;
     private String email;
     private String country;
     private String city;
@@ -31,31 +31,31 @@ public class UserApiModel {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     @Column(name = "username", nullable = false)
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Column(name = "firstname", nullable = false)
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     @Column(name = "lastname", nullable = false)
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     @Column(name = "email", nullable = false)
@@ -76,7 +76,7 @@ public class UserApiModel {
         this.country = country;
     }
 
-    @Column(name = "city")
+    @Column(name = "city",  nullable = true)
     public String getCity() { return city; }
 
     public void setCity(String city) { this.city = city; }

@@ -41,9 +41,9 @@ class UserRegistrationWorker {
     private void registerNewUser(UserRegistrationCommand registeredUser) throws InterruptedException {
         UserApiModel newUser = new UserApiModel();
 
-        newUser.setUserName(registeredUser.getUsername());
-        newUser.setFirstName(registeredUser.getFirstname());
-        newUser.setLastName(registeredUser.getLastname());
+        newUser.setUsername(registeredUser.getUsername());
+        newUser.setFirstname(registeredUser.getFirstname());
+        newUser.setLastname(registeredUser.getLastname());
         newUser.setEmail(registeredUser.getEmail());
         newUser.setCountry(registeredUser.getCountry());
 
