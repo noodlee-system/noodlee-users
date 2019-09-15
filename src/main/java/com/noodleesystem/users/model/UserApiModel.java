@@ -27,13 +27,8 @@ public class UserApiModel {
     @Column(name = "city", nullable = true)
     private String city;
 
-    @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
-    private UsersGroupApiModel group;
-
     public UserApiModel() {
     }
-
 
     public int getId() {
         return id;

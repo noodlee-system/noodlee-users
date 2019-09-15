@@ -6,14 +6,22 @@ import java.sql.Date;
 @Entity
 @Table(name = "groups")
 public class UsersGroupApiModel {
-
-    private int id;
-    private String name;
-    private Date startDate;
-    private Date endDate;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "start_date", nullable = false)
+    private Date startDate;
+
+    @Column(name = "end_date", nullable = false)
+    private Date endDate;
+
+    public UsersGroupApiModel() {
+    }
+
     public int getId() {
         return id;
     }
@@ -22,7 +30,6 @@ public class UsersGroupApiModel {
         this.id = id;
     }
 
-    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -31,7 +38,6 @@ public class UsersGroupApiModel {
         this.name = name;
     }
 
-    @Column(name = "start_date", nullable = false)
     public Date getStartDate() {
         return startDate;
     }
@@ -40,7 +46,6 @@ public class UsersGroupApiModel {
         this.startDate = startDate;
     }
 
-    @Column(name = "end_date", nullable = false)
     public Date getEndDate() {
         return endDate;
     }
@@ -48,5 +53,4 @@ public class UsersGroupApiModel {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-
 }
