@@ -4,33 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "students")
-public class StudentApiModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private int id;
-
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_user", referencedColumnName = "id")
-    private UserApiModel user;
-
+@PrimaryKeyJoinColumn(name = "user")
+public class StudentApiModel extends UserApiModel {
     public StudentApiModel() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public UserApiModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserApiModel user) {
-        this.user = user;
     }
 }

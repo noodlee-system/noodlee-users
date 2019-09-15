@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class UserApiModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
