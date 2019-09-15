@@ -2,6 +2,7 @@ package com.noodleesystem.users.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "teachers")
@@ -10,13 +11,13 @@ public class TeacherApiModel extends UserApiModel {
     public TeacherApiModel() {
     }
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name = "courses",
-            joinColumns = { @JoinColumn(name = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "id") }
+            name = "Teachers_courses",
+            joinColumns = {@JoinColumn(name = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "id")}
     )
-    Set<CourseApiModel> courses = new HashSet<CourseApiModel>();
+    Set<CourseApiModel> courses = new HashSet<>();
 
     public Set<CourseApiModel> getCourses() {
         return courses;
