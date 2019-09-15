@@ -2,6 +2,7 @@ package com.noodleesystem.users.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,8 +21,11 @@ public class UsersGroupApiModel {
     @Column(name = "end_date", nullable = false)
     private Date endDate;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "group")
     private Set<StudentApiModel> students;
+
+    @ManyToMany(mappedBy = "groups")
+    private Set<CourseApiModel> courses = new HashSet<>();
 
     public UsersGroupApiModel() {
     }

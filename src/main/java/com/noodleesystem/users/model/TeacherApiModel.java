@@ -13,7 +13,7 @@ public class TeacherApiModel extends UserApiModel {
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name = "Teachers_courses",
+            name = "teachers_courses",
             joinColumns = {@JoinColumn(name = "id_teacher")},
             inverseJoinColumns = {@JoinColumn(name = "id_course")}
     )

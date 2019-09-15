@@ -7,17 +7,17 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "user")
 public class StudentApiModel extends UserApiModel {
     @ManyToOne
-    @JoinColumn(name="id_course", nullable=false)
-    private CourseApiModel course;
+    @JoinColumn(name="id_group", nullable=false)
+    private UsersGroupApiModel group;
 
     public StudentApiModel() {
     }
 
-    public CourseApiModel getCourse() {
-        return course;
+    public UsersGroupApiModel getGroup() {
+        return group;
     }
 
-    public void setCourse(CourseApiModel course) {
-        this.course = course;
+    public void setGroup(UsersGroupApiModel group) {
+        this.group = group;
     }
 }

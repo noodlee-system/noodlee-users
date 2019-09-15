@@ -17,6 +17,14 @@ public class CourseApiModel {
     @ManyToMany(mappedBy = "courses")
     private Set<TeacherApiModel> teachers = new HashSet<>();
 
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "courses_groups",
+            joinColumns = {@JoinColumn(name = "id_course")},
+            inverseJoinColumns = {@JoinColumn(name = "id_group")}
+    )
+    Set<UsersGroupApiModel> groups = new HashSet<>();
+
     public int getId() {
         return id;
     }
