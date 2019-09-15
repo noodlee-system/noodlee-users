@@ -24,8 +24,13 @@ public class UsersGroupApiModel {
     @OneToMany(mappedBy = "group")
     private Set<StudentApiModel> students;
 
-    @ManyToMany(mappedBy = "groups")
-    private Set<CourseApiModel> courses = new HashSet<>();
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "group_courses",
+            joinColumns = {@JoinColumn(name = "id_group")},
+            inverseJoinColumns = {@JoinColumn(name = "id_course")}
+    )
+    Set<CourseApiModel> courses = new HashSet<>();
 
     public UsersGroupApiModel() {
     }
@@ -68,5 +73,13 @@ public class UsersGroupApiModel {
 
     public void setStudents(Set<StudentApiModel> students) {
         this.students = students;
+    }
+
+    public Set<CourseApiModel> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<CourseApiModel> courses) {
+        this.courses = courses;
     }
 }
