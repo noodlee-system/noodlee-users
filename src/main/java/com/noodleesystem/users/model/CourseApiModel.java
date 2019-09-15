@@ -20,6 +20,9 @@ public class CourseApiModel {
     @ManyToMany(mappedBy = "courses")
     private Set<UsersGroupApiModel> groups = new HashSet<>();
 
+    @ManyToMany(mappedBy = "otherCourses")
+    private Set<StudentApiModel> otherStudents = new HashSet<>();
+
     public int getId() {
         return id;
     }
@@ -50,5 +53,13 @@ public class CourseApiModel {
 
     public void setGroups(Set<UsersGroupApiModel> groups) {
         this.groups = groups;
+    }
+
+    public Set<StudentApiModel> getOtherStudents() {
+        return otherStudents;
+    }
+
+    public void setOtherStudents(Set<StudentApiModel> otherStudents) {
+        this.otherStudents = otherStudents;
     }
 }
