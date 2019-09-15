@@ -2,6 +2,7 @@ package com.noodleesystem.users.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "groups")
@@ -18,6 +19,9 @@ public class UsersGroupApiModel {
 
     @Column(name = "end_date", nullable = false)
     private Date endDate;
+
+    @OneToMany(mappedBy = "course")
+    private Set<UserApiModel> users;
 
     public UsersGroupApiModel() {
     }
@@ -52,5 +56,13 @@ public class UsersGroupApiModel {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Set<UserApiModel> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserApiModel> users) {
+        this.users = users;
     }
 }
