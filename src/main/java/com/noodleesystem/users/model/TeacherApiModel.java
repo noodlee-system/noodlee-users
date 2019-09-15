@@ -6,7 +6,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "teachers")
-@PrimaryKeyJoinColumn(name = "user")
 public class TeacherApiModel extends UserApiModel {
     public TeacherApiModel() {
     }

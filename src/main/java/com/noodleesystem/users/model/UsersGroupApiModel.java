@@ -26,7 +26,7 @@ public class UsersGroupApiModel {
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name = "group_courses",
+            name = "groups_courses",
             joinColumns = {@JoinColumn(name = "id_group")},
             inverseJoinColumns = {@JoinColumn(name = "id_course")}
     )

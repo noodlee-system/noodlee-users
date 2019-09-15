@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "students")
-@PrimaryKeyJoinColumn(name = "user")
 public class StudentApiModel extends UserApiModel {
     @ManyToOne
     @JoinColumn(name="id_group", nullable=false)
