@@ -14,8 +14,8 @@ public class TeacherApiModel extends UserApiModel {
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "Teachers_courses",
-            joinColumns = {@JoinColumn(name = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "id")}
+            joinColumns = {@JoinColumn(name = "id_teacher")},
+            inverseJoinColumns = {@JoinColumn(name = "id_course")}
     )
     Set<CourseApiModel> courses = new HashSet<>();
 

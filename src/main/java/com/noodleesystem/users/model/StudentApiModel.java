@@ -7,7 +7,7 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "user")
 public class StudentApiModel extends UserApiModel {
     @ManyToOne
-    @JoinColumn(name="id", nullable=false)
+    @JoinColumn(name="id_course", nullable=false)
     private CourseApiModel course;
 
     public StudentApiModel() {

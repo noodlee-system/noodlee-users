@@ -21,7 +21,7 @@ public class UsersGroupApiModel {
     private Date endDate;
 
     @OneToMany(mappedBy = "course")
-    private Set<UserApiModel> users;
+    private Set<StudentApiModel> students;
 
     public UsersGroupApiModel() {
     }
@@ -58,11 +58,11 @@ public class UsersGroupApiModel {
         this.endDate = endDate;
     }
 
-    public Set<UserApiModel> getUsers() {
-        return users;
+    public Set<StudentApiModel> getStudents() {
+        return students;
     }
 
-    public void setUsers(Set<UserApiModel> users) {
-        this.users = users;
+    public void setStudents(Set<StudentApiModel> students) {
+        this.students = students;
     }
 }
