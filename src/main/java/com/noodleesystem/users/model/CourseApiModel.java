@@ -23,6 +23,9 @@ public class CourseApiModel {
     @ManyToMany(mappedBy = "otherCourses")
     private Set<StudentApiModel> otherStudents = new HashSet<>();
 
+    @OneToMany(mappedBy = "course")
+    private Set<ScoreApiModel> scores;
+
     public int getId() {
         return id;
     }
@@ -61,5 +64,13 @@ public class CourseApiModel {
 
     public void setOtherStudents(Set<StudentApiModel> otherStudents) {
         this.otherStudents = otherStudents;
+    }
+
+    public Set<ScoreApiModel> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<ScoreApiModel> scores) {
+        this.scores = scores;
     }
 }

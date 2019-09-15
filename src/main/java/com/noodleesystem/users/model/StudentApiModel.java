@@ -19,6 +19,9 @@ public class StudentApiModel extends UserApiModel {
     )
     Set<CourseApiModel> otherCourses = new HashSet<>();
 
+    @OneToMany(mappedBy = "student")
+    private Set<ScoreApiModel> scores;
+
     public StudentApiModel() {
     }
 
@@ -36,5 +39,13 @@ public class StudentApiModel extends UserApiModel {
 
     public void setOtherCourses(Set<CourseApiModel> otherCourses) {
         this.otherCourses = otherCourses;
+    }
+
+    public Set<ScoreApiModel> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<ScoreApiModel> scores) {
+        this.scores = scores;
     }
 }
