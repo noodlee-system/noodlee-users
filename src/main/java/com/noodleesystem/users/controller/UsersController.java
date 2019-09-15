@@ -13,16 +13,17 @@ import com.noodleesystem.users.model.UserApiModel;
 import com.noodleesystem.users.repository.UserRepository;
 
 @RestController
+@RequestMapping("/users")
 public class UsersController {
     @Autowired
 	private UserRepository usersRepository;
 
-    @GetMapping("/users")
+    @GetMapping("/getAll")
     List<UserApiModel> getAllUsers() {
         return usersRepository.findAll();
 	}
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     UserApiModel getUser(@PathVariable int id) {
         UserApiModel user = usersRepository.getUserById(id);
 
