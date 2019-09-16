@@ -1,5 +1,8 @@
 package com.noodleesystem.users.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,15 +18,19 @@ public class CourseApiModel {
     private String name;
 
     @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
+    @JsonBackReference
     private Set<TeacherApiModel> teachers = new HashSet<>();
 
     @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
+    @JsonBackReference
     private Set<UsersGroupApiModel> groups = new HashSet<>();
 
     @ManyToMany(mappedBy = "otherCourses", cascade = CascadeType.PERSIST)
+    @JsonBackReference
     private Set<StudentApiModel> otherStudents = new HashSet<>();
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.PERSIST)
+    @JsonBackReference
     private Set<ScoreApiModel> scores;
 
     public int getId() {

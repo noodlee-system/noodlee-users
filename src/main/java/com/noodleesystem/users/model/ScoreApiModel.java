@@ -1,5 +1,8 @@
 package com.noodleesystem.users.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +18,7 @@ public class ScoreApiModel {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_course")
+    @JsonManagedReference
     private CourseApiModel course;
 
     @Column(name = "score")

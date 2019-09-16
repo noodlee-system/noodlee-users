@@ -1,5 +1,8 @@
 package com.noodleesystem.users.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.HashSet;
@@ -30,6 +33,7 @@ public class UsersGroupApiModel {
             joinColumns = {@JoinColumn(name = "id_group")},
             inverseJoinColumns = {@JoinColumn(name = "id_course")}
     )
+    @JsonManagedReference
     Set<CourseApiModel> courses = new HashSet<>();
 
     public UsersGroupApiModel() {
