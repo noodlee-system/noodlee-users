@@ -14,16 +14,16 @@ public class CourseApiModel {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
     private Set<TeacherApiModel> teachers = new HashSet<>();
 
-    @ManyToMany(mappedBy = "courses")
+    @ManyToMany(mappedBy = "courses", cascade = CascadeType.PERSIST)
     private Set<UsersGroupApiModel> groups = new HashSet<>();
 
-    @ManyToMany(mappedBy = "otherCourses")
+    @ManyToMany(mappedBy = "otherCourses", cascade = CascadeType.PERSIST)
     private Set<StudentApiModel> otherStudents = new HashSet<>();
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.PERSIST)
     private Set<ScoreApiModel> scores;
 
     public int getId() {

@@ -7,11 +7,11 @@ import java.util.Set;
 @Entity
 @Table(name = "students")
 public class StudentApiModel extends UserApiModel {
-    @ManyToOne
-    @JoinColumn(name="id_group", nullable=false)
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="id_group")
     private UsersGroupApiModel group;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "students_courses",
             joinColumns = {@JoinColumn(name = "id_student")},
@@ -19,7 +19,7 @@ public class StudentApiModel extends UserApiModel {
     )
     Set<CourseApiModel> otherCourses = new HashSet<>();
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.PERSIST)
     private Set<ScoreApiModel> scores;
 
     public StudentApiModel() {

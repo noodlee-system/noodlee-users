@@ -10,7 +10,7 @@ public class TeacherApiModel extends UserApiModel {
     public TeacherApiModel() {
     }
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "teachers_courses",
             joinColumns = {@JoinColumn(name = "id_teacher")},
