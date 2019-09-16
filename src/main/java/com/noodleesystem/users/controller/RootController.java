@@ -34,15 +34,12 @@ public class RootController {
     {
         CourseApiModel course = new CourseApiModel();
         course.setName("testCourse");
-        //courseRepository.save(course);
 
         CourseApiModel otherCourse = new CourseApiModel();
         otherCourse.setName("otherTestCourse");
-        //courseRepository.save(otherCourse);
 
         ScoreApiModel score = new ScoreApiModel();
         score.setScore(5.0);
-        //scoreRepository.save(score);
 
         StudentApiModel student = new StudentApiModel();
         student.setUsername("student");
@@ -51,7 +48,6 @@ public class RootController {
         student.setCountry("student");
         student.setEmail("student@student.student");
         student.setCity("student");
-        //studentRepository.save(student);
 
         StudentApiModel otherStudent = new StudentApiModel();
         otherStudent.setUsername("otherStudent");
@@ -60,7 +56,6 @@ public class RootController {
         otherStudent.setCountry("otherStudent");
         otherStudent.setEmail("otherStudent@otherStudent.otherStudent");
         otherStudent.setCity("otherStudent");
-        //studentRepository.save(otherStudent);
 
         TeacherApiModel teacher = new TeacherApiModel();
         teacher.setUsername("teacher");
@@ -69,45 +64,40 @@ public class RootController {
         teacher.setCountry("teacher");
         teacher.setEmail("teacher@teacher.teacher");
         teacher.setCity("teacher");
-        //teacherRepository.save(teacher);
 
         UsersGroupApiModel group = new UsersGroupApiModel();
         group.setName("testGroup");
         group.setStartDate(Date.valueOf(LocalDate.now()));
         group.setEndDate(Date.valueOf(LocalDate.now().plusYears(3)));
-        //usersGroupRepository.save(group);
 
         course.setOtherStudents(new HashSet<>(Arrays.asList(otherStudent)));
         course.setGroups(new HashSet<>(Arrays.asList(group)));
         course.setScores(new HashSet<>(Arrays.asList(score)));
         course.setTeachers(new HashSet<>(Arrays.asList(teacher)));
-        //courseRepository.save(course);
+
+        otherCourse.setOtherStudents(new HashSet<>(Arrays.asList(otherStudent)));
+        otherCourse.setTeachers(new HashSet<>(Arrays.asList(teacher)));
 
         score.setCourse(course);
         score.setStudent(student);
-        //scoreRepository.save(score);
 
         student.setGroup(group);
         student.setScores(new HashSet<>(Arrays.asList(score)));
-        student.setOtherCourses(new HashSet<>(Arrays.asList(otherCourse)));
-        //studentRepository.save(student);
-        //studentRepository.save(otherStudent);
 
-        teacher.setCourses(new HashSet<>(Arrays.asList(course)));
-        //teacherRepository.save(teacher);
+        otherStudent.setOtherCourses(new HashSet<>(Arrays.asList(course)));
+
+        teacher.setCourses(new HashSet<>(Arrays.asList(course, otherCourse)));
 
         group.setStudents(new HashSet<>(Arrays.asList(student)));
         group.setCourses(new HashSet<>(Arrays.asList(course)));
-        //usersGroupRepository.save(group);
 
         courseRepository.save(course);
         courseRepository.save(otherCourse);
         scoreRepository.save(score);
-        usersGroupRepository.save(group);
         studentRepository.save(student);
         studentRepository.save(otherStudent);
         teacherRepository.save(teacher);
-
+        usersGroupRepository.save(group);
     }
 
 }
