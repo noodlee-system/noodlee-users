@@ -77,6 +77,7 @@ public class RootController {
 
         otherCourse.setOtherStudents(new HashSet<>(Arrays.asList(otherStudent)));
         otherCourse.setTeachers(new HashSet<>(Arrays.asList(teacher)));
+        otherCourse.setGroups(new HashSet<>(Arrays.asList(group)));
 
         score.setCourse(course);
         score.setStudent(student);
@@ -89,7 +90,7 @@ public class RootController {
         teacher.setCourses(new HashSet<>(Arrays.asList(course, otherCourse)));
 
         group.setStudents(new HashSet<>(Arrays.asList(student)));
-        group.setCourses(new HashSet<>(Arrays.asList(course)));
+        group.setCourses(new HashSet<>(Arrays.asList(course, otherCourse)));
 
         courseRepository.save(course);
         courseRepository.save(otherCourse);
