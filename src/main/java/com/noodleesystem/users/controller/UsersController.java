@@ -16,12 +16,12 @@ import com.noodleesystem.users.repository.UserRepository;
 @RequestMapping("/users")
 public class UsersController {
     @Autowired
-	private UserRepository usersRepository;
+    private UserRepository usersRepository;
 
     @GetMapping("/getAll")
     List<UserApiModel> getAllUsers() {
         return usersRepository.findAll();
-	}
+    }
 
     @GetMapping("/{id}")
     UserApiModel getUser(@PathVariable int id) {
@@ -32,5 +32,19 @@ public class UsersController {
         } else {
             throw new UserNotFoundException(id);
         }
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @ResponseBody
+    UserApiModel updateUser(@PathVariable("id") int id, @RequestBody UserApiModel userToUpdate) {
+        UserApiModel user = usersRepository.getUserById(id);
+        user.setUsername(userToUpdate.getUsername());
+        user.setFirstname(userToUpdate.getFirstname());
+        user.setLastname(userToUpdate.getLastname());
+        user.setCity(userToUpdate.getCity());
+        user.setCountry(userToUpdate.getCountry());
+        user.setEmail(userToUpdate.getEmail());
+        usersRepository.save(user);
+        return user;
     }
 }
